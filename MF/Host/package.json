@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "d": "npx webpack server",
-    "b": "npx webpack"
+    "d": "npx webpack server"
   },
   "devDependencies": {
     "css-loader": "^6.6.0",

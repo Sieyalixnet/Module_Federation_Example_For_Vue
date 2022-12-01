@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h4>{{ message }}</h4>
+    <h3>{{ message }}</h3>
   </div>
 </template>
 
@@ -8,15 +8,15 @@
 export default {
   data() {
     return {
-      message: "target to seperate User page",
+      message: "Home",
     };
   },
 };
 </script>
 
 <style >
-h4 {
+h3 {
   margin: 30px 0 0;
-  color: #f00;
+  color: #42b983;
 }
 </style>

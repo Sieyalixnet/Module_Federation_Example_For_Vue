@@ -4,19 +4,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      message: "target to seperate User page",
-    };
-  },
-};
+<script setup>
+const message = "this is user page from Module Federation"
 </script>
 
 <style >
 h4 {
   margin: 30px 0 0;
-  color: #f00;
+  color:red;
 }
 </style>

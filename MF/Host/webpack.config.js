@@ -1,6 +1,8 @@
 const { VueLoaderPlugin } = require("vue-loader");
 const path = require('path')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
+const deps = require("./package.json").devDependencies;
 
 var content = `
 <!DOCTYPE html>
@@ -23,10 +25,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     devServer: {
+        port: 8082,
         hot: true,
-        open: true
-    },
-    //
+        open: true,
+      },
     module: {
         rules: [
             {
@@ -44,6 +46,21 @@ module.exports = {
 
     },
     plugins: [new VueLoaderPlugin(),
+    new ModuleFederationPlugin({
+        remotes: {
+            RemoteOrder: "order@http://localhost:8081/dist/remoteEntry.js",
+          },
+        shared: {
+            "vue": {
+                singleton: true,
+                requiredVersion: deps["vue"],
+            },
+            "vue-router": {
+                singleton: true,
+                requiredVersion: deps["vue-router"],
+            },
+        }
+    }),
     new HtmlWebpackPlugin({
         templateContent: content
     })],
